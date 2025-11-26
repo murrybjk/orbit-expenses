@@ -1,0 +1,590 @@
+Title,Category,Date,Amount
+Bank,Finance,2025-11-07,50.00
+Verizon,Utilities,2025-11-04,79.99
+CubeSmart,Housing,2025-10-29,386.80
+Acorns,Investments,2025-10-27,3.00
+Con Edison,Utilities,2025-10-24,178.48
+Acorns,Investments,2025-10-20,3.00
+Geico,Insurance,2025-10-15,155.60
+Cumberland Farms,Transport,2025-10-07,51.17
+Verizon,Utilities,2025-10-02,79.99
+CubeSmart,Housing,2025-09-30,386.80
+Acorns,Investments,2025-09-29,3.00
+Con Edison,Utilities,2025-09-25,257.55
+Acorns,Investments,2025-09-18,3.00
+Amazon,Shopping,2025-09-16,120.99
+Geico,Insurance,2025-09-16,155.52
+Okka Foods,Groceries,2025-09-15,56.44
+Verizon,Utilities,2025-09-03,79.99
+7-Eleven,Shopping,2025-09-02,25.33
+Wash Experts,Services,2025-09-02,87.10
+CubeSmart,Housing,2025-08-29,386.80
+Acorns,Investments,2025-08-27,3.00
+NYC Finance,Fees,2025-08-26,75.00
+Con Edison,Utilities,2025-08-26,296.46
+Acorns,Investments,2025-08-18,3.00
+Okka Foods,Groceries,2025-08-18,45.03
+Geico,Insurance,2025-08-15,156.77
+Kings Valley Fruit,Groceries,2025-08-13,11.85
+Gulf Oil,Transport,2025-08-11,49.59
+Verizon,Utilities,2025-08-04,79.99
+CubeSmart,Housing,2025-07-29,386.80
+Acorns,Investments,2025-07-28,3.00
+Con Edison,Utilities,2025-07-28,268.50
+Acorns,Investments,2025-07-18,3.00
+Geico,Insurance,2025-07-15,156.76
+PayPal Transfer,Transfer,2025-07-14,2.10
+Wash Experts,Services,2025-07-14,56.62
+Wawa,Transport,2025-07-07,46.19
+Verizon,Utilities,2025-07-02,79.99
+PayPal Transfer,Transfer,2025-06-30,0.24
+CubeSmart,Housing,2025-06-30,45.00
+Acorns,Investments,2025-06-27,3.00
+Con Edison,Utilities,2025-06-26,164.69
+NYC Finance,Fees,2025-06-24,130.00
+Acorns,Investments,2025-06-18,3.00
+Geico,Insurance,2025-06-16,156.76
+Dunkin Donuts,Food & Dining,2025-06-04,4.56
+Verizon,Utilities,2025-06-03,79.99
+Con Edison,Utilities,2025-05-28,132.74
+Cumberland Farms,Transport,2025-05-27,18.98
+Acorns,Investments,2025-05-27,3.00
+Pride Station,Transport,2025-05-27,47.36
+Crepes Tea House,Food & Dining,2025-05-27,100.00
+IRS Tax,Taxes,2025-05-22,2002.68
+Acorns,Investments,2025-05-19,3.00
+Geico,Insurance,2025-05-15,156.76
+Verizon,Utilities,2025-05-02,79.99
+Skyline Billiards,Entertainment,2025-04-28,45.00
+Acorns,Investments,2025-04-28,3.00
+Con Edison,Utilities,2025-04-28,121.05
+Gulf Oil,Transport,2025-04-22,47.95
+Acorns,Investments,2025-04-18,3.00
+NYS Tax,Taxes,2025-04-17,28.00
+IRS Tax,Taxes,2025-04-17,2523.00
+Geico,Insurance,2025-04-15,156.76
+Omny Vending,Food & Dining,2025-04-07,3.25
+PayPal Transfer,Transfer,2025-04-07,0.12
+Verizon,Utilities,2025-04-02,79.99
+Con Edison,Utilities,2025-03-28,144.10
+Acorns,Investments,2025-03-27,3.00
+PayPal Transfer,Transfer,2025-03-24,0.11
+Acorns,Investments,2025-03-17,3.00
+Geico,Insurance,2025-03-17,156.69
+PayPal Transfer,Transfer,2025-03-10,0.13
+National Grid,Utilities,2025-03-06,108.82
+Verizon,Utilities,2025-03-04,79.99
+Acorns,Investments,2025-02-27,3.00
+Con Edison,Utilities,2025-02-26,138.45
+Acorns,Investments,2025-02-18,3.00
+Geico,Insurance,2025-02-18,154.67
+PayPal Transfer,Transfer,2025-02-10,0.10
+Verizon,Utilities,2025-02-04,79.99
+Solitaire Cash,Entertainment,2025-01-28,16.30
+Acorns,Investments,2025-01-27,3.00
+Con Edison,Utilities,2025-01-27,149.18
+NYS Tax,Taxes,2025-01-23,50.00
+NYS Tax,Taxes,2025-01-23,50.00
+Acorns,Investments,2025-01-21,3.00
+Solitaire Cash,Entertainment,2025-01-15,2.10
+Solitaire Cash,Entertainment,2025-01-15,2.10
+Solitaire Cash,Entertainment,2025-01-15,2.10
+Geico,Insurance,2025-01-15,154.68
+PayPal Transfer,Transfer,2025-01-13,15.08
+Verizon,Utilities,2025-01-03,79.99
+Service Fee,Fees,2025-09-30,15.00
+Service Fee,Fees,2025-08-29,15.00
+Service Fee,Fees,2025-07-31,15.00
+Service Fee,Fees,2025-06-30,15.00
+Service Fee,Fees,2025-05-30,15.00
+Service Fee,Fees,2025-04-30,15.00
+Service Fee,Fees,2025-03-31,15.00
+Service Fee,Fees,2025-10-31,15.00
+Service Fee,Fees,2025-09-30,15.00
+Service Fee,Fees,2025-08-29,15.00
+Service Fee,Fees,2025-07-31,15.00
+Service Fee,Fees,2025-06-30,15.00
+Service Fee,Fees,2025-05-30,15.00
+Service Fee,Fees,2025-04-30,15.00
+Service Fee,Fees,2025-03-31,15.00
+Service Fee,Fees,2025-02-28,15.00
+Service Fee,Fees,2025-01-31,15.00
+Amazon Prime,Subscriptions,2025-10-27,16.32
+Helium Mobile,Utilities,2025-10-22,21.98
+RealVNC,Software,2025-10-21,198.00
+Helium Mobile,Utilities,2025-10-08,21.98
+Amazon Prime,Subscriptions,2025-09-26,16.32
+Helium Mobile,Utilities,2025-09-22,21.97
+Helium Mobile,Utilities,2025-09-08,21.97
+Paramount+,Entertainment,2025-08-28,12.99
+Amazon Prime,Subscriptions,2025-08-26,16.32
+Helium Mobile,Utilities,2025-08-22,21.97
+Helium Mobile,Utilities,2025-08-08,21.97
+Amazon Prime,Subscriptions,2025-07-26,16.32
+Helium Mobile,Utilities,2025-07-22,21.97
+Helium Mobile,Utilities,2025-07-08,21.98
+Amazon Prime,Subscriptions,2025-06-26,16.32
+Helium Mobile,Utilities,2025-06-23,21.98
+Amazon Prime,Subscriptions,2025-06-19,2.17
+Amazon,Shopping,2025-06-12,6.39
+Helium Mobile,Utilities,2025-06-09,21.98
+Blink Fitness,Health,2025-06-07,83.59
+Muslim Hands,Donations,2025-06-07,68.10
+Helium Mobile,Utilities,2025-05-22,21.98
+Walmart,Shopping,2025-05-19,179.00
+Amazon Prime,Subscriptions,2025-05-13,16.32
+Helium Mobile,Utilities,2025-05-13,21.97
+Helium Mobile,Utilities,2025-05-08,21.97
+Amazon Prime,Subscriptions,2025-04-14,16.32
+Helium Mobile,Utilities,2025-04-08,21.97
+OpenAI,Software,2025-03-20,5.44
+Amazon Prime,Subscriptions,2025-03-13,16.32
+Amazon,Shopping,2025-03-13,6.73
+Helium Mobile,Utilities,2025-03-08,21.97
+Amazon Prime,Subscriptions,2025-02-13,16.32
+Helium Mobile,Utilities,2025-02-08,21.97
+Amazon Prime,Subscriptions,2025-01-13,16.32
+Helium Mobile,Utilities,2025-01-08,21.97
+Amazon,Shopping,2025-01-07,4.89
+EA Inc,Entertainment,2025-10-27,18.05
+EA Inc,Entertainment,2025-09-25,18.05
+EA Inc,Entertainment,2025-09-19,6.36
+IONOS,Software,2025-09-08,3.09
+PureVPN,Software,2025-07-23,35.88
+IPBurger,Software,2025-07-21,129.71
+Interest Charge,Fees,2025-06-21,0.13
+IONOS,Software,2025-06-20,149.70
+Google One,Subscriptions,2025-06-10,21.76
+Interest Charge,Fees,2025-05-22,0.29
+EA Inc,Entertainment,2025-05-20,18.05
+Google One,Subscriptions,2025-05-12,21.76
+EA Inc,Entertainment,2025-04-21,18.05
+Edraw Deyu,Software,2025-03-28,107.79
+EA Inc,Entertainment,2025-03-20,14.63
+IONOS,Software,2025-02-25,16.33
+EA Inc,Entertainment,2025-02-20,18.05
+IONOS,Software,2025-02-06,23.95
+Helium Mobile,Utilities,2025-01-24,21.97
+EA Inc,Entertainment,2025-01-20,18.05
+EA Inc,Entertainment,2025-01-07,14.33
+IONOS,Software,2025-01-06,23.95
+Amazon,Shopping,2025-10-08,108.86
+PassNY,Transport,2025-10-08,25.00
+Amazon,Shopping,2025-09-30,13.05
+Amazon,Shopping,2025-09-25,173.32
+Amazon,Shopping,2025-09-09,10.88
+Amazon,Shopping,2025-09-08,8.64
+Amazon,Shopping,2025-09-07,7.68
+Amazon,Shopping,2025-07-21,19.99
+Amazon,Shopping,2025-07-16,14.14
+Amazon,Shopping,2025-07-15,12.26
+PassNY,Transport,2025-07-07,25.00
+PassNY,Transport,2025-07-05,25.00
+Amazon,Shopping,2025-06-18,29.32
+PassNY,Transport,2025-05-25,25.00
+Amazon,Shopping,2025-04-11,20.68
+Amazon,Shopping,2025-04-11,55.37
+Amazon,Shopping,2025-04-09,7.49
+Amazon,Shopping,2025-02-20,56.40
+Amazon,Shopping,2025-02-03,44.48
+Uber Eats,Food & Dining,2025-11-07,32.71
+Dunkin Donuts,Food & Dining,2025-11-04,3.80
+Dunkin Donuts,Food & Dining,2025-10-31,3.80
+Dunkin Donuts,Food & Dining,2025-10-30,3.80
+Dunkin Donuts,Food & Dining,2025-10-27,3.80
+Dunkin Donuts,Food & Dining,2025-10-25,3.80
+Dunkin Donuts,Food & Dining,2025-10-23,3.80
+Dunkin Donuts,Food & Dining,2025-10-22,3.80
+Dunkin Donuts,Food & Dining,2025-10-21,4.78
+Dunkin Donuts,Food & Dining,2025-10-20,3.80
+Dunkin Donuts,Food & Dining,2025-10-18,4.67
+Dunkin Donuts,Food & Dining,2025-10-17,3.69
+Dunkin Donuts,Food & Dining,2025-10-17,3.80
+Dunkin Donuts,Food & Dining,2025-10-16,3.69
+Dunkin Donuts,Food & Dining,2025-10-15,4.78
+Dunkin Donuts,Food & Dining,2025-10-14,3.80
+Dunkin Donuts,Food & Dining,2025-10-13,3.80
+Dunkin Donuts,Food & Dining,2025-10-10,3.80
+Dunkin Donuts,Food & Dining,2025-10-09,3.80
+Dunkin Donuts,Food & Dining,2025-10-08,3.69
+Dunkin Donuts,Food & Dining,2025-10-01,3.69
+Dunkin Donuts,Food & Dining,2025-09-30,3.69
+Dunkin Donuts,Food & Dining,2025-09-29,4.67
+Dunkin Donuts,Food & Dining,2025-09-28,4.67
+Dunkin Donuts,Food & Dining,2025-09-27,4.67
+Kings Cafe,Groceries,2025-09-26,29.12
+Kings Valley,Groceries,2025-09-24,13.16
+Dunkin Donuts,Food & Dining,2025-09-22,3.69
+7-Eleven,Shopping,2025-09-21,9.99
+Gulf Oil,Transport,2025-09-21,24.35
+Dunkin Donuts,Food & Dining,2025-09-21,3.69
+7-Eleven,Shopping,2025-09-19,3.26
+Uber,Transport,2025-09-19,26.92
+Dunkin Donuts,Food & Dining,2025-09-19,3.69
+Kings Valley,Groceries,2025-09-18,16.15
+Dunkin Donuts,Food & Dining,2025-09-18,4.67
+7-Eleven,Shopping,2025-09-17,3.04
+Dunkin Donuts,Food & Dining,2025-09-17,3.69
+7-Eleven,Shopping,2025-09-12,5.98
+Dunkin Donuts,Food & Dining,2025-09-12,3.69
+Dunkin Donuts,Food & Dining,2025-09-11,4.67
+Dunkin Donuts,Food & Dining,2025-09-10,6.68
+7-Eleven,Shopping,2025-09-09,2.93
+Dunkin Donuts,Food & Dining,2025-09-09,3.69
+Kings Valley,Groceries,2025-09-07,13.87
+Dunkin Donuts,Food & Dining,2025-09-06,4.67
+Dunkin Donuts,Food & Dining,2025-09-05,3.69
+7-Eleven,Shopping,2025-09-04,2.82
+Dunkin Donuts,Food & Dining,2025-09-04,9.66
+Dunkin Donuts,Food & Dining,2025-09-04,4.67
+Dunkin Donuts,Food & Dining,2025-09-03,3.69
+Dunkin Donuts,Food & Dining,2025-09-02,8.88
+Dunkin Donuts,Food & Dining,2025-09-01,3.58
+7-Eleven,Shopping,2025-08-31,2.17
+Kings Valley,Groceries,2025-08-31,18.01
+Nostrand Smoke,Shopping,2025-08-31,24.96
+Dunkin Donuts,Food & Dining,2025-08-31,11.51
+Dannys Pizza,Food & Dining,2025-08-30,35.95
+Uber Eats,Food & Dining,2025-08-30,34.76
+Dunkin Donuts,Food & Dining,2025-08-29,3.58
+Dunkin Donuts,Food & Dining,2025-08-29,3.69
+7-Eleven,Shopping,2025-08-28,6.98
+Dunkin Donuts,Food & Dining,2025-08-28,3.69
+7-Eleven,Shopping,2025-08-27,6.09
+Dunkin Donuts,Food & Dining,2025-08-27,3.58
+Dunkin Donuts,Food & Dining,2025-08-26,3.58
+Dunkin Donuts,Food & Dining,2025-08-25,3.58
+Kings Valley,Groceries,2025-08-23,20.31
+Dunkin Donuts,Food & Dining,2025-08-23,4.67
+Uber Eats,Food & Dining,2025-08-22,30.10
+Dunkin Donuts,Food & Dining,2025-08-22,3.69
+Dunkin Donuts,Food & Dining,2025-08-21,3.69
+Kings Valley,Groceries,2025-08-20,35.25
+Dunkin Donuts,Food & Dining,2025-08-19,3.58
+Dunkin Donuts,Food & Dining,2025-08-19,4.67
+Dunkin Donuts,Food & Dining,2025-08-18,3.69
+7-Eleven,Shopping,2025-08-17,3.26
+Dunkin Donuts,Food & Dining,2025-08-17,4.67
+7-Eleven,Shopping,2025-08-16,5.86
+Dunkin Donuts,Food & Dining,2025-08-16,4.67
+Dunkin Donuts,Food & Dining,2025-08-15,4.67
+Dunkin Donuts,Food & Dining,2025-08-14,3.58
+Dunkin Donuts,Food & Dining,2025-08-13,4.67
+Uber,Transport,2025-08-12,21.93
+Dunkin Donuts,Food & Dining,2025-08-12,3.69
+7-Eleven,Shopping,2025-08-11,6.51
+Dunkin Donuts,Food & Dining,2025-08-11,4.67
+Dunkin Donuts,Food & Dining,2025-08-10,4.67
+Gotham City,Food & Dining,2025-08-09,24.75
+Dunkin Donuts,Food & Dining,2025-08-08,3.69
+Dunkin Donuts,Food & Dining,2025-08-07,3.69
+Dunkin Donuts,Food & Dining,2025-08-07,4.67
+7-Eleven,Shopping,2025-08-06,3.26
+7-Eleven,Shopping,2025-08-06,3.69
+Kings Valley,Groceries,2025-08-06,12.36
+Uber,Transport,2025-08-05,7.75
+Dunkin Donuts,Food & Dining,2025-08-05,3.69
+7-Eleven,Shopping,2025-08-04,3.26
+Dunkin Donuts,Food & Dining,2025-08-04,4.67
+Dunkin Donuts,Food & Dining,2025-08-04,3.69
+Dunkin Donuts,Food & Dining,2025-08-03,4.67
+Dunkin Donuts,Food & Dining,2025-08-01,3.69
+Dunkin Donuts,Food & Dining,2025-07-31,4.67
+Skyline,Entertainment,2025-07-30,10.00
+Dunkin Donuts,Food & Dining,2025-07-30,3.69
+Dunkin Donuts,Food & Dining,2025-07-29,4.67
+Dannys Pizza,Food & Dining,2025-07-28,20.96
+Dunkin Donuts,Food & Dining,2025-07-28,3.69
+Dunkin Donuts,Food & Dining,2025-07-28,4.67
+Gotham City,Food & Dining,2025-07-27,21.00
+Dunkin Donuts,Food & Dining,2025-07-27,8.36
+Dunkin Donuts,Food & Dining,2025-07-26,4.67
+7-Eleven,Shopping,2025-07-25,42.11
+Paradies,Food & Dining,2025-07-25,10.60
+7-Eleven,Shopping,2025-07-24,11.72
+Dunkin Donuts,Food & Dining,2025-07-24,2.91
+Dunkin Donuts,Food & Dining,2025-07-23,3.69
+7-Eleven,Shopping,2025-07-22,3.82
+Nostrand Smoke,Shopping,2025-07-22,37.44
+7-Eleven,Shopping,2025-07-21,6.40
+Aksaray Cafe,Food & Dining,2025-07-21,20.70
+Skyline,Entertainment,2025-07-21,10.00
+Dunkin Donuts,Food & Dining,2025-07-21,3.69
+7-Eleven,Shopping,2025-07-20,4.36
+Kings Valley,Groceries,2025-07-20,12.34
+Okka Foods,Groceries,2025-07-20,42.12
+Dunkin Donuts,Food & Dining,2025-07-20,4.67
+Gulf Oil,Transport,2025-07-19,46.66
+Dunkin Donuts,Food & Dining,2025-07-19,4.67
+Aksaray Cafe,Food & Dining,2025-07-18,10.35
+Dunkin Donuts,Food & Dining,2025-07-17,6.96
+7-Eleven,Shopping,2025-07-16,1.91
+Dunkin Donuts,Food & Dining,2025-07-16,9.44
+Dunkin Donuts,Food & Dining,2025-07-15,4.67
+Dunkin Donuts,Food & Dining,2025-07-14,9.66
+Kings Valley,Groceries,2025-07-13,14.42
+Nostrand Smoke,Shopping,2025-07-13,27.04
+Dunkin Donuts,Food & Dining,2025-07-13,4.67
+Uber Eats,Food & Dining,2025-07-12,36.43
+Dunkin Donuts,Food & Dining,2025-07-12,4.67
+Dunkin Donuts,Food & Dining,2025-07-11,3.69
+Sheepshead Bay,Entertainment,2025-07-10,10.17
+Dunkin Donuts,Food & Dining,2025-07-10,9.44
+Nostrand Smoke,Shopping,2025-07-09,49.92
+Dunkin Donuts,Food & Dining,2025-07-08,3.69
+Dunkin Donuts,Food & Dining,2025-07-07,11.07
+Dunkin Donuts,Food & Dining,2025-07-06,4.56
+7-Eleven,Shopping,2025-07-05,3.04
+Dunkin Donuts,Food & Dining,2025-07-05,3.25
+Nostrand Smoke,Shopping,2025-07-05,36.40
+SEPTA,Transport,2025-07-05,2.50
+Uber,Transport,2025-07-05,12.78
+7-Eleven,Shopping,2025-07-04,3.80
+Nostrand Smoke,Shopping,2025-07-03,24.96
+7-Eleven,Shopping,2025-07-02,4.36
+Kings Valley,Groceries,2025-07-02,21.71
+Dunkin Donuts,Food & Dining,2025-07-01,7.83
+Skyline,Entertainment,2025-06-30,20.00
+Uber,Transport,2025-06-30,17.94
+Dunkin Donuts,Food & Dining,2025-06-30,3.58
+7-Eleven,Shopping,2025-06-29,3.82
+TCB,Food & Dining,2025-06-29,15.22
+CubeSmart,Housing,2025-06-28,6.85
+7-Eleven,Shopping,2025-06-27,6.63
+Dunkin Donuts,Food & Dining,2025-06-27,3.58
+Dunkin Donuts,Food & Dining,2025-06-25,3.58
+Okka Foods,Groceries,2025-06-23,17.96
+Shepherds,Food & Dining,2025-06-23,5.72
+Dunkin Donuts,Food & Dining,2025-06-23,3.58
+Dunkin Donuts,Food & Dining,2025-06-22,4.02
+7-Eleven,Shopping,2025-06-18,6.91
+Dunkin Donuts,Food & Dining,2025-06-17,3.58
+Gulf Oil,Transport,2025-06-14,47.49
+Target,Shopping,2025-06-14,6.80
+Maman,Food & Dining,2025-06-14,23.40
+Uber Eats,Food & Dining,2025-06-14,33.57
+Skyline,Entertainment,2025-06-13,32.00
+Dunkin Donuts,Food & Dining,2025-06-12,4.56
+7-Eleven,Shopping,2025-06-11,4.73
+Dunkin Donuts,Food & Dining,2025-06-10,3.58
+Dunkin Donuts,Food & Dining,2025-06-09,3.58
+Dunkin Donuts,Food & Dining,2025-06-07,4.56
+MetroMagic,Entertainment,2025-06-06,12.00
+Dunkin Donuts,Food & Dining,2025-06-05,4.56
+Dunkin Donuts,Food & Dining,2025-06-04,3.58
+Dunkin Donuts,Food & Dining,2025-06-02,3.58
+Aksaray Cafe,Food & Dining,2025-05-31,20.70
+7-Eleven,Shopping,2025-05-30,5.75
+ExpressVPN,Software,2025-05-29,12.95
+Dunkin Donuts,Food & Dining,2025-05-29,3.58
+Skyline,Entertainment,2025-05-28,26.00
+Dunkin Donuts,Food & Dining,2025-05-28,3.58
+Exxon,Transport,2025-05-27,3.31
+Big Y,Groceries,2025-05-26,18.92
+Pride Station,Transport,2025-05-26,3.29
+Stop & Shop,Groceries,2025-05-25,35.01
+Aksaray Cafe,Food & Dining,2025-05-23,44.66
+Skyline,Entertainment,2025-05-23,26.00
+Dunkin Donuts,Food & Dining,2025-05-23,3.58
+Dunkin Donuts,Food & Dining,2025-05-22,3.58
+7-Eleven,Shopping,2025-05-21,4.03
+Dunkin Donuts,Food & Dining,2025-05-21,3.58
+Gulf Oil,Transport,2025-05-21,50.10
+Dunkin Donuts,Food & Dining,2025-05-20,3.58
+Uber Eats,Food & Dining,2025-05-20,33.34
+Kings Valley,Groceries,2025-05-19,19.01
+Midwood Bagel,Food & Dining,2025-05-19,7.28
+Dunkin Donuts,Food & Dining,2025-05-19,3.58
+Skyline,Entertainment,2025-05-18,48.00
+Shepherds,Food & Dining,2025-05-17,10.89
+Dunkin Donuts,Food & Dining,2025-05-16,3.58
+Dunkin Donuts,Food & Dining,2025-05-14,7.16
+7-Eleven,Shopping,2025-05-12,3.80
+Dunkin Donuts,Food & Dining,2025-05-12,3.58
+Dunkin Donuts,Food & Dining,2025-05-10,4.56
+Uber Eats,Food & Dining,2025-05-10,30.34
+Dunkin Donuts,Food & Dining,2025-05-09,3.58
+Skyline,Entertainment,2025-05-09,45.00
+Dunkin Donuts,Food & Dining,2025-05-06,3.58
+Dunkin Donuts,Food & Dining,2025-05-05,3.58
+7-Eleven,Shopping,2025-05-04,3.31
+Dunkin Donuts,Food & Dining,2025-05-04,3.58
+Dunkin Donuts,Food & Dining,2025-05-02,19.33
+Dunkin Donuts,Food & Dining,2025-05-01,3.58
+7-Eleven,Shopping,2025-04-30,5.75
+Dunkin Donuts,Food & Dining,2025-04-30,10.00
+ExpressVPN,Software,2025-04-29,12.95
+Dunkin Donuts,Food & Dining,2025-04-28,3.58
+Dunkin Donuts,Food & Dining,2025-04-27,3.58
+Dunkin Donuts,Food & Dining,2025-04-25,10.00
+Dunkin Donuts,Food & Dining,2025-04-24,3.58
+Dunkin Donuts,Food & Dining,2025-04-23,3.58
+Uber Eats,Food & Dining,2025-04-23,29.97
+Dunkin Donuts,Food & Dining,2025-04-22,3.58
+Dunkin Donuts,Food & Dining,2025-04-21,4.75
+Dunkin Donuts,Food & Dining,2025-04-20,4.56
+Dunkin Donuts,Food & Dining,2025-01-25,10.00
+CubeSmart,Housing,2025-05-31,492.00
+CubeSmart,Housing,2025-04-30,492.00
+CubeSmart,Housing,2025-03-31,492.00
+CubeSmart,Housing,2025-02-28,492.00
+CubeSmart,Housing,2025-01-31,492.00
+7-Eleven,Shopping,2025-08-01,2.17
+7-Eleven,Shopping,2025-10-01,3.26
+Dunkin Donuts,Food & Dining,2025-10-01,10.00
+7-Eleven,Shopping,2025-10-02,8.58
+Snack Vending,Food & Dining,2025-10-05,4.75
+7-Eleven,Shopping,2025-10-10,5.64
+Groceries,Groceries,2025-10-11,9.25
+Gas Station,Transport,2025-10-18,42.07
+Hardware Store,Housing,2025-10-20,14.13
+Groceries,Groceries,2025-10-20,28.31
+7-Eleven,Shopping,2025-10-21,4.93
+7-Eleven,Shopping,2025-10-23,3.30
+Dunkin Donuts,Food & Dining,2025-10-24,3.80
+Dunkin Donuts,Food & Dining,2025-10-29,3.69
+Dunkin Donuts,Food & Dining,2025-01-25,5.00
+Dunkin Donuts,Food & Dining,2025-09-14,10.00
+Uber Eats,Food & Dining,2025-10-15,12.22
+7-Eleven,Shopping,2025-11-01,6.46
+7-Eleven,Shopping,2025-11-06,19.56
+7-Eleven,Shopping,2025-11-06,5.68
+Nostrand Smoke,Shopping,2025-11-03,38.48
+7-Eleven,Shopping,2025-11-03,7.94
+Aksaray Cafe,Food & Dining,2025-10-30,10.35
+7-Eleven,Shopping,2025-10-28,3.30
+Kings Valley,Groceries,2025-10-28,13.13
+Ocean Finest,Food & Dining,2025-10-20,29.12
+Cumberland Farms,Transport,2025-10-08,15.90
+Dunkin Donuts,Food & Dining,2025-10-07,2.35
+Gulf Oil,Transport,2025-09-28,38.19
+Dunkin Donuts,Food & Dining,2025-09-24,10.00
+Claude AI,Software,2025-10-23,108.88
+Cursor AI,Software,2025-10-23,21.78
+OpenAI,Software,2025-10-21,21.78
+Claude AI,Software,2025-09-23,108.88
+Cursor AI,Software,2025-09-23,21.78
+OpenAI,Software,2025-09-21,21.78
+Cursor AI,Software,2025-08-24,21.78
+Claude AI,Software,2025-08-24,95.16
+Anthropic,Software,2025-08-14,5.44
+Claude AI,Software,2025-08-11,21.78
+OpenAI,Software,2025-06-22,32.19
+OpenAI,Software,2025-05-21,21.78
+OpenAI,Software,2025-04-21,21.78
+OpenAI,Software,2025-03-21,21.78
+OpenAI,Software,2025-02-21,21.78
+OpenAI,Software,2025-01-21,21.78
+Dunkin Donuts,Food & Dining,2025-11-07,3.80
+7-Eleven,Shopping,2025-11-04,3.30
+Dunkin Donuts,Food & Dining,2025-11-03,3.80
+7-Eleven,Shopping,2025-11-03,3.30
+Kings Cafe,Groceries,2025-10-31,16.64
+7-Eleven,Shopping,2025-10-30,3.30
+7-Eleven,Shopping,2025-10-28,3.30
+Nostrand Smoke,Shopping,2025-10-24,40.56
+Uber,Transport,2025-10-22,11.94
+Uber,Transport,2025-10-21,11.93
+Dunkin Donuts,Food & Dining,2025-10-20,4.78
+7-Eleven,Shopping,2025-10-20,6.50
+Xsolla,Entertainment,2025-10-19,10.88
+Nostrand Smoke,Shopping,2025-10-19,37.44
+Midwood Bagel,Food & Dining,2025-10-17,20.79
+Nostrand Smoke,Shopping,2025-10-12,37.44
+7-Eleven,Shopping,2025-10-10,3.26
+McDonalds,Food & Dining,2025-10-08,18.45
+Xsolla,Entertainment,2025-10-02,10.88
+Aksaray Cafe,Food & Dining,2025-09-30,20.70
+Xsolla,Entertainment,2025-09-29,13.89
+Costco,Shopping,2025-09-29,66.24
+Dunkin Donuts,Food & Dining,2025-09-25,10.00
+Aksaray Cafe,Food & Dining,2025-09-25,10.35
+Refund,Adjustment,2025-10-13,41.60
+Dunkin Donuts,Food & Dining,2025-09-08,10.00
+CDKeys,Gaming,2025-06-05,16.59
+Apple,Software,2025-10-26,10.87
+Apple,Software,2025-10-24,8.70
+Apple,Software,2025-10-23,9.99
+Microsoft,Software,2025-10-19,10.61
+Apple,Software,2025-10-05,2.17
+Apple,Software,2025-09-24,8.70
+Apple,Software,2025-09-23,9.99
+Apple,Software,2025-09-22,10.86
+eBay,Shopping,2025-09-17,8.50
+Apple,Software,2025-09-07,14.13
+Helium Mobile,Utilities,2025-09-05,21.97
+Apple,Software,2025-08-25,14.13
+Apple,Software,2025-08-24,9.99
+Apple,Software,2025-08-24,8.70
+Apple,Software,2025-08-15,16.31
+Helium Mobile,Utilities,2025-08-05,21.97
+Apple,Software,2025-08-03,2.17
+Apple,Software,2025-07-24,8.70
+Apple,Software,2025-07-23,9.99
+Apple,Software,2025-07-15,5.43
+Apple,Software,2025-07-04,46.72
+eBay,Shopping,2025-06-24,288.91
+Apple,Software,2025-06-24,8.70
+eBay,Shopping,2025-06-24,46.97
+Apple,Software,2025-06-23,9.99
+Helium Mobile,Utilities,2025-06-05,21.98
+Interest Charge,Fees,2025-06-04,1.66
+Apple,Software,2025-06-04,7.60
+iPostal,Services,2025-05-29,14.99
+Transaction Fee,Fees,2025-05-25,0.17
+HZD Tek,Shopping,2025-05-25,5.87
+Apple,Software,2025-05-25,8.70
+Apple,Software,2025-05-23,9.99
+Microsoft,Software,2025-05-20,10.61
+Helium Mobile,Utilities,2025-05-05,21.97
+Apple,Software,2025-05-04,22.84
+Splashtop,Software,2025-05-01,18.49
+iPostal,Services,2025-04-29,14.99
+Visible,Phone,2025-04-29,25.00
+Transaction Fee,Fees,2025-04-24,0.17
+HZD Tek,Shopping,2025-04-24,5.96
+Apple,Software,2025-04-24,8.70
+Apple,Software,2025-04-23,9.99
+Microsoft,Software,2025-04-20,10.61
+Helium Mobile,Utilities,2025-04-06,21.97
+Apple,Software,2025-04-04,20.67
+Visible,Phone,2025-03-30,25.00
+iPostal,Services,2025-03-30,14.99
+Transaction Fee,Fees,2025-03-24,0.18
+HZD Tek,Shopping,2025-03-24,6.10
+Apple,Software,2025-03-24,8.70
+Apple,Software,2025-03-23,9.99
+Microsoft,Software,2025-03-20,10.61
+Apple,Software,2025-03-06,18.50
+Helium Mobile,Utilities,2025-03-05,21.97
+Apple,Software,2025-03-03,2.17
+iPostal,Services,2025-03-02,14.99
+Visible,Phone,2025-02-27,25.00
+Transaction Fee,Fees,2025-02-24,0.18
+HZD Tek,Shopping,2025-02-24,6.28
+Apple,Software,2025-02-24,8.70
+Apple,Software,2025-02-23,9.99
+Gulf Oil,Transport,2025-02-23,20.00
+King Plaza Auto,Transport,2025-02-23,130.65
+Microsoft,Software,2025-02-20,10.61
+Gulf Oil,Transport,2025-02-16,35.00
+Helium Mobile,Utilities,2025-02-05,21.97
+Apple,Software,2025-02-03,18.50
+Costco,Shopping,2025-02-03,706.79
+Costco,Shopping,2025-02-03,34.82
+Amazon,Shopping,2025-02-02,35.92
+Gulf Oil,Transport,2025-02-02,40.00
+Amazon,Shopping,2025-01-30,39.17
+iPostal,Services,2025-01-29,14.99
+Amazon,Shopping,2025-01-29,36.06
+Apple,Software,2025-01-29,2.17
+Visible,Phone,2025-01-29,25.00
+Transaction Fee,Fees,2025-01-24,0.13
+HZD Tek,Shopping,2025-01-24,4.38
+Apple,Software,2025-01-24,8.70
+Apple,Software,2025-01-23,9.99
+Amazon,Shopping,2025-01-21,26.64
+Gulf Oil,Transport,2025-01-19,40.00
+Microsoft,Software,2025-01-19,7.43
+Amazon,Shopping,2025-01-08,8.15
+Helium Mobile,Utilities,2025-01-05,21.97
