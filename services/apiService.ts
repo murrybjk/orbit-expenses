@@ -1,52 +1,17 @@
 
 import { supabase } from './supabaseClient';
 import { Expense, CategoryConfig, CategoryId } from '../types';
-import { CATEGORIES, AVAILABLE_COLORS } from '../constants';
-
-const getColorName = (hex: string) => {
-  const found = AVAILABLE_COLORS.find(c => c.value.toLowerCase() === hex.toLowerCase());
-  return found ? found.name : 'Blue'; 
-};
-
-const SEED_EXPENSES: Omit<Expense, 'id'>[] = [
-  {
-    title: 'Grocery Run',
-    amount: 85.50,
-    date: '2025-11-18',
-    categoryId: CategoryId.FOOD,
-    note: 'Weekly essentials'
-  },
-  {
-    title: 'Netflix',
-    amount: 15.99,
-    date: '2025-11-19',
-    categoryId: CategoryId.ENTERTAINMENT,
-  },
-  {
-    title: 'Rent',
-    amount: 1200.00,
-    date: '2025-11-19',
-    categoryId: CategoryId.HOUSING,
-  },
-  {
-    title: 'Uber to Airport',
-    amount: 45.20,
-    date: '2025-11-18',
-    categoryId: CategoryId.TRANSPORT,
-  }
-];
+import { CATEGORIES } from '../constants';
 
 export const ApiService = {
   // --- Icons ---
-  // Fetches the list of icons currently registered in the database
-  // (Optional if using purely local list, but kept for hybrid support)
   getAvailableIcons: async (): Promise<{ name: string; label: string }[]> => {
     try {
       const { data, error } = await supabase
         .from('master_icons')
         .select('name, label')
         .order('name');
-      
+
       if (error) throw error;
       return data || [];
     } catch (err) {
@@ -55,33 +20,14 @@ export const ApiService = {
     }
   },
 
-  // Ensures an icon exists in master_icons before using it in a category
-  // This prevents Foreign Key errors in Supabase
   ensureIconExists: async (name: string): Promise<void> => {
     try {
-      // Check if exists
       const { data } = await supabase.from('master_icons').select('name').eq('name', name).single();
       if (data) return;
 
-      // Insert if missing
       await supabase.from('master_icons').insert({ name, label: name });
     } catch (err) {
-      // Ignore duplicate errors or race conditions
-      console.log(`Icon ${name} checked/inserted`);
-    }
-  },
-
-  addMasterIcon: async (name: string, label: string): Promise<boolean> => {
-    try {
-      const { error } = await supabase
-        .from('master_icons')
-        .insert({ name, label });
-      
-      if (error) throw error;
-      return true;
-    } catch (err) {
-      console.error("Failed to add icon", err);
-      return false;
+      // Ignore duplicate errors
     }
   },
 
@@ -91,13 +37,16 @@ export const ApiService = {
       const { data, error } = await supabase
         .from('categories')
         .select(`
-          *,
+          id,
+          label,
+          icon_name,
           master_colors ( hex_code )
         `);
 
       if (error) throw error;
 
       if (!data || data.length === 0) {
+        // Fallback to seeds if empty
         return await seedCategories();
       }
 
@@ -115,16 +64,19 @@ export const ApiService = {
       return record;
     } catch (err: any) {
       console.error('Error fetching categories:', err.message || err);
-      return CATEGORIES;
+      return {};
     }
   },
 
-  createCategory: async (category: CategoryConfig): Promise<CategoryConfig | null> => {
+  createCategory: async (category: CategoryConfig): Promise<{ success: boolean; data?: CategoryConfig; error?: any }> => {
     try {
-      const colorName = getColorName(category.color);
-      
-      // Critical: Ensure the icon is in the master table first
+      // 1. Ensure Icon Exists
       await ApiService.ensureIconExists(category.iconName);
+
+      // 2. Resolve Color Name (Reverse lookup from hex)
+      // Note: This assumes the color exists in master_colors. 
+      // If custom colors are allowed, we'd need to insert into master_colors too.
+      const colorName = await getColorNameFromHex(category.color);
 
       const { error } = await supabase
         .from('categories')
@@ -136,19 +88,17 @@ export const ApiService = {
         });
 
       if (error) throw error;
-      return category;
+      return { success: true, data: category };
     } catch (err: any) {
       console.error('Error creating category:', err.message || err);
-      return null;
+      return { success: false, error: err };
     }
   },
 
-  updateCategory: async (category: CategoryConfig): Promise<CategoryConfig | null> => {
+  updateCategory: async (category: CategoryConfig): Promise<{ success: boolean; data?: CategoryConfig; error?: any }> => {
     try {
-      const colorName = getColorName(category.color);
-
-      // Critical: Ensure the icon is in the master table first
       await ApiService.ensureIconExists(category.iconName);
+      const colorName = await getColorNameFromHex(category.color);
 
       const { error } = await supabase
         .from('categories')
@@ -160,10 +110,10 @@ export const ApiService = {
         .eq('id', category.id);
 
       if (error) throw error;
-      return category;
+      return { success: true, data: category };
     } catch (err: any) {
       console.error('Error updating category:', err.message || err);
-      return null;
+      return { success: false, error: err };
     }
   },
 
@@ -178,8 +128,6 @@ export const ApiService = {
       return { success: true };
     } catch (err: any) {
       console.error('Error deleting category:', err.message || err);
-      // Usually fails due to Foreign Key constraint (expenses using this category)
-      // Return full error object so caller can check .code or .message
       return { success: false, error: err };
     }
   },
@@ -209,15 +157,11 @@ export const ApiService = {
 
       if (error) throw error;
 
-      if (!data || data.length === 0) {
-          return await seedExpenses();
-      }
-
-      return data.map((e: any) => ({
+      return (data || []).map((e: any) => ({
         id: e.id,
         title: e.title,
         amount: Number(e.amount),
-        date: e.date, // Expecting YYYY-MM-DD string
+        date: e.date,
         categoryId: e.category_id,
         note: e.note
       }));
@@ -242,8 +186,7 @@ export const ApiService = {
         .single();
 
       if (error) throw error;
-      
-      // Use the ID returned from the DB
+
       return { ...expense, id: data.id };
     } catch (err: any) {
       console.error('Error creating expense:', err.message || err);
@@ -289,23 +232,37 @@ export const ApiService = {
 
   resetDatabase: async (): Promise<boolean> => {
     try {
-        await supabase.from('expenses').delete().neq('id', 0); 
-        await supabase.from('categories').delete().neq('id', 'placeholder');
-        await seedCategories();
-        await seedExpenses();
-        return true;
+      // Order matters for FK constraints
+      await supabase.from('expenses').delete().neq('id', 0);
+      await supabase.from('categories').delete().neq('id', 'placeholder');
+      // Re-seed
+      await seedCategories();
+      return true;
     } catch (err) {
-        console.error("Reset failed", err);
-        return false;
+      console.error("Reset failed", err);
+      return false;
     }
   }
 };
 
+// Helper: Get color name from hex (or default to Blue)
+async function getColorNameFromHex(hex: string): Promise<string> {
+  const { data } = await supabase
+    .from('master_colors')
+    .select('name')
+    .ilike('hex_code', hex) // Case insensitive match
+    .single();
+
+  return data ? data.name : 'Blue';
+}
+
 async function seedCategories(): Promise<Record<string, CategoryConfig>> {
   const defaults = Object.values(CATEGORIES);
   for (const cat of defaults) {
-    const colorName = getColorName(cat.color);
     await ApiService.ensureIconExists(cat.iconName);
+    // Try to find a matching color name for the hex
+    const colorName = await getColorNameFromHex(cat.color);
+
     await supabase.from('categories').insert({
       id: cat.id,
       label: cat.label,
@@ -314,22 +271,4 @@ async function seedCategories(): Promise<Record<string, CategoryConfig>> {
     });
   }
   return CATEGORIES;
-}
-
-async function seedExpenses(): Promise<Expense[]> {
-  const createdExpenses: Expense[] = [];
-  for (const seed of SEED_EXPENSES) {
-    const { data, error } = await supabase.from('expenses').insert({
-      title: seed.title,
-      amount: seed.amount,
-      date: seed.date,
-      category_id: seed.categoryId,
-      note: seed.note
-    }).select().single();
-    
-    if (!error && data) {
-        createdExpenses.push({ ...seed, id: data.id });
-    }
-  }
-  return createdExpenses.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
