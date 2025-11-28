@@ -31,6 +31,22 @@ export const ApiService = {
     }
   },
 
+  addMasterIcon: async (name: string, label: string): Promise<void> => {
+    try {
+      await supabase.from('master_icons').insert({ name, label });
+    } catch (err) {
+      console.error("Failed to add icon", err);
+    }
+  },
+
+  deleteMasterIcon: async (name: string): Promise<void> => {
+    try {
+      await supabase.from('master_icons').delete().eq('name', name);
+    } catch (err) {
+      console.error("Failed to delete icon", err);
+    }
+  },
+
   // --- Categories ---
   getCategories: async (): Promise<Record<string, CategoryConfig>> => {
     try {

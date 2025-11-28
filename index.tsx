@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ToastProvider } from './components/ui/Toast';
+import { ThemeProvider } from './components/ui/ThemeContext';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -40,9 +41,11 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <ErrorBoundary>
-      <ToastProvider>
-        <App />
-      </ToastProvider>
+      <ThemeProvider>
+        <ToastProvider>
+          <App />
+        </ToastProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   </React.StrictMode>
 );

@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const DateRangeControl: React.FC<Props> = ({ currentDate, scope, onDateChange, onScopeChange }) => {
-  
+
   const handlePrev = () => {
     const newDate = new Date(currentDate);
     if (scope === 'MONTH') newDate.setMonth(newDate.getMonth() - 1);
@@ -32,18 +32,17 @@ export const DateRangeControl: React.FC<Props> = ({ currentDate, scope, onDateCh
   };
 
   return (
-    <div className="flex items-center bg-gray-900/80 border border-gray-800 rounded-xl shadow-lg backdrop-blur-sm p-1 gap-1">
+    <div className="flex items-center bg-card/80 border border-border rounded-xl shadow-lg backdrop-blur-sm p-1 gap-1">
       {/* Scope Selector */}
-      <div className="flex bg-gray-950 rounded-lg p-1 mr-1">
+      <div className="flex bg-app rounded-lg p-1 mr-1">
         {(['MONTH', 'YEAR', 'ALL'] as DateScope[]).map((s) => (
           <button
             key={s}
             onClick={() => onScopeChange(s)}
-            className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${
-              scope === s 
-                ? 'bg-gray-800 text-white shadow-sm' 
-                : 'text-gray-500 hover:text-gray-300'
-            }`}
+            className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${scope === s
+              ? 'bg-card text-primary shadow-sm'
+              : 'text-muted hover:text-primary'
+              }`}
           >
             {s === 'ALL' ? 'All' : s === 'YEAR' ? 'Year' : 'Month'}
           </button>
@@ -53,31 +52,33 @@ export const DateRangeControl: React.FC<Props> = ({ currentDate, scope, onDateCh
       {/* Navigation (Hidden for ALL view) */}
       {scope !== 'ALL' && (
         <>
-          <button 
+          <button
             onClick={handlePrev}
-            className="p-1.5 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-all"
+            className="p-1.5 text-muted hover:text-primary hover:bg-accent/10 rounded-lg transition-all"
+            title="Previous Period"
           >
             <ChevronLeft size={18} />
           </button>
-          
+
           <div className="flex items-center justify-center w-32 px-2">
-            <span className="text-sm font-semibold text-gray-100 tabular-nums tracking-wide whitespace-nowrap">
+            <span className="text-sm font-semibold text-primary tabular-nums tracking-wide whitespace-nowrap">
               {getLabel()}
             </span>
           </div>
 
-          <button 
+          <button
             onClick={handleNext}
-            className="p-1.5 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-all"
+            className="p-1.5 text-muted hover:text-primary hover:bg-accent/10 rounded-lg transition-all"
+            title="Next Period"
           >
             <ChevronRight size={18} />
           </button>
         </>
       )}
-      
+
       {scope === 'ALL' && (
         <div className="flex items-center justify-center w-32 px-2">
-          <span className="text-sm font-semibold text-gray-100 tracking-wide">History</span>
+          <span className="text-sm font-semibold text-primary tracking-wide">History</span>
         </div>
       )}
     </div>

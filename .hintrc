@@ -1,0 +1,11 @@
+{
+    "extends": [
+        "development"
+    ],
+    "hints": {
+        "no-inline-styles": "off",
+        "button-name": "off",
+        "input-label": "off",
+        "compat-api/css": "off"
+    }
+}
