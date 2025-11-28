@@ -12,7 +12,7 @@ Orbit Expenses is a Supabase-backed React/Vite UI for tracking spending, categor
 ## Architecture
 - **Frontend**: React 19 + Vite + Tailwind CSS.
 - **Backend**: Supabase (PostgreSQL + PostgREST).
-- **State Management**: React Hooks + Context API.
+- **State Management**: Custom Hooks (`useOrbitData`, `useOrbitFilters`) + Context API.
 - **Notifications**: Custom Toast notification system.
 
 ## Setup Instructions

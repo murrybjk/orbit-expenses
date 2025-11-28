@@ -1,34 +1,62 @@
-
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState } from 'react';
 import { LayoutDashboard, Tag, Table2, PieChart, Settings as SettingsIcon, Upload, Download, FileText, RefreshCw, Shapes, Sun, Moon, TrendingUp, FileArchive } from 'lucide-react';
-import { Expense, DateScope, CategoryConfig } from './types';
+import { Expense, CategoryConfig } from './types';
 import { StorageService } from './services/storageService';
-import { ApiService } from './services/apiService';
 import { useToast } from './components/ui/Toast';
 import { useTheme } from './components/ui/ThemeContext';
+import { useOrbitData } from './hooks/useOrbitData';
+import { useOrbitFilters } from './hooks/useOrbitFilters';
 
 import { Card, Modal } from './components/ui/Elements';
 import { DateRangeControl } from './components/ui/DateRangeControl';
-import { ExpenseForm } from './components/expenses/ExpenseForm';
-import { ExpensesTable, TableFilters } from './components/expenses/ExpensesTable';
+import { ExpensesTable } from './components/expenses/ExpensesTable';
 import { CategoryChart } from './components/charts/CategoryChart';
 import { TrendsChart } from './components/charts/TrendsChart';
 import { CategoryMatrixChart } from './components/charts/CategoryMatrixChart';
 import { CategoryFlashChart } from './components/charts/CategoryFlashChart';
 import { CategoryManager } from './components/categories/CategoryManager';
 import { CategoryForm } from './components/categories/CategoryForm';
+import { ExpenseForm } from './components/expenses/ExpenseForm';
 import { IconLibrary } from './components/icons/IconLibrary';
-import { getTodayString } from './constants';
 
 type DashboardTab = 'OVERVIEW' | 'TRANSACTIONS';
 
 const App: React.FC = () => {
   const { showToast } = useToast();
   const { theme, toggleTheme } = useTheme();
-  const [expenses, setExpenses] = useState<Expense[]>([]);
-  const [categories, setCategories] = useState<Record<string, CategoryConfig>>({});
-  const [isLoading, setIsLoading] = useState(true);
 
+  // Custom Hooks
+  const {
+    expenses,
+    categories,
+    isLoading,
+    setExpenses,
+    addExpense,
+    updateExpense,
+    deleteExpense,
+    saveCategory,
+    deleteCategory,
+    resetDatabase,
+    fetchData
+  } = useOrbitData();
+
+  const {
+    filters,
+    setFilters,
+    currentDate,
+    setCurrentDate,
+    dateScope,
+    setDateScope,
+    filteredExpenses,
+    chartData,
+    totalSpent,
+    trendsData,
+    filteredTrendsData,
+    dashboardChartCategories,
+    expenseCounts
+  } = useOrbitFilters(expenses, categories);
+
+  // UI State
   const [isExpenseModalOpen, setIsExpenseModalOpen] = useState(false);
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
@@ -38,258 +66,41 @@ const App: React.FC = () => {
 
   const [mainView, setMainView] = useState<'DASHBOARD' | 'DASHBOARD_2' | 'TRANSACTIONS' | 'TRENDS' | 'CATEGORIES' | 'ICONS' | 'SETTINGS'>('DASHBOARD');
   const [mobileTab, setMobileTab] = useState<'OVERVIEW' | 'TRANSACTIONS'>('OVERVIEW');
-  const [dashboardTrendsMode, setDashboardTrendsMode] = useState<'TOTAL' | 'CATEGORY' | 'MATRIX' | 'TABLE'>('MATRIX');
-
-  const [filters, setFilters] = useState<TableFilters>({
-    title: '',
-    categories: [],
-    dateStart: '',
-    dateEnd: '',
-    amountMin: '',
-    amountMax: ''
-  });
-
-
-
-  const [currentDate, setCurrentDate] = useState(() => {
-    const todayStr = getTodayString();
-    const [y, m, d] = todayStr.split('-').map(Number);
-    return new Date(y, m - 1, d);
-  });
-  const [dateScope, setDateScope] = useState<DateScope>('MONTH');
+  const [dashboardTrendsMode, setDashboardTrendsMode] = useState<'TOTAL' | 'CATEGORY' | 'MATRIX' | 'TABLE' | 'FLASH'>('MATRIX');
   const [trendMode, setTrendMode] = useState<'TOTAL' | 'CATEGORY'>('CATEGORY');
 
-  const fetchData = async () => {
-    setIsLoading(true);
-    try {
-      const [fetchedCategories, fetchedExpenses] = await Promise.all([
-        ApiService.getCategories(),
-        ApiService.getExpenses(),
-      ]);
-      setCategories(fetchedCategories);
-      setExpenses(fetchedExpenses);
-    } catch (error) {
-      console.error("Failed to fetch initial data", error);
-      showToast("Failed to load data", "error");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  // 1. Base Data: Filtered by Date, Title, Amount (Everything EXCEPT Category)
-  // This dataset drives the CHART (so it always shows the full pie for the period)
-  const expensesInScope = useMemo(() => {
-    return expenses.filter(e => {
-      // Date Scope Logic
-      if (dateScope !== 'ALL') {
-        const [yearStr, monthStr] = e.date.split('-');
-        const eYear = parseInt(yearStr);
-        const eMonth = parseInt(monthStr);
-
-        const cYear = currentDate.getFullYear();
-        const cMonth = currentDate.getMonth() + 1;
-
-        if (dateScope === 'YEAR') {
-          if (eYear !== cYear) return false;
-        } else {
-          if (eYear !== cYear || eMonth !== cMonth) return false;
-        }
-      }
-
-      // Title Filter
-      if (filters.title && !e.title.toLowerCase().includes(filters.title.toLowerCase())) return false;
-
-      // Amount Filter
-      if (filters.amountMin && e.amount < parseFloat(filters.amountMin)) return false;
-      if (filters.amountMax && e.amount > parseFloat(filters.amountMax)) return false;
-
-      // Date Range Filter (Custom)
-      if (filters.dateStart && e.date < filters.dateStart) return false;
-      if (filters.dateEnd && e.date > filters.dateEnd) return false;
-
-      return true;
-    });
-  }, [expenses, currentDate, dateScope, filters.title, filters.amountMin, filters.amountMax, filters.dateStart, filters.dateEnd]);
-
-  // 2. Filtered Data: Base Data + Category Filter
-  // This dataset drives the TABLE (so it shows only selected items)
-  const filteredExpenses = useMemo(() => {
-    return expensesInScope.filter(e => {
-      if (filters.categories.length > 0 && !filters.categories.includes(e.categoryId)) return false;
-      return true;
-    });
-  }, [expensesInScope, filters.categories]);
-
-  // Chart Data derived from Base Data (ignoring category selection so slices stay visible)
-  const chartData = useMemo(() => {
-    const dataMap: Record<string, number> = {};
-    expensesInScope.forEach(e => {
-      dataMap[e.categoryId] = (dataMap[e.categoryId] || 0) + e.amount;
-    });
-
-    return Object.keys(dataMap).map(catId => {
-      const config = categories[catId];
-      if (!config) return null;
-
-      return {
-        name: config.label,
-        value: dataMap[catId],
-        color: config.color,
-        categoryId: catId
-      };
-    }).filter(Boolean).sort((a: any, b: any) => b.value - a.value) as any[];
-  }, [expensesInScope, categories]);
-
-  // Total Spent derived from Base Data (Grand Total for the period)
-  const totalSpent = useMemo(() => {
-    return expensesInScope.reduce((sum, e) => sum + e.amount, 0);
-  }, [expensesInScope]);
-
-  // Trends Data derived from Base Data (Grouped by Month)
-  const trendsData = useMemo(() => {
-    const grouped: Record<string, any> = {};
-
-    expensesInScope.forEach(e => {
-      // Format YYYY-MM
-      const monthKey = e.date.substring(0, 7);
-
-      if (!grouped[monthKey]) {
-        grouped[monthKey] = { name: monthKey, total: 0 };
-      }
-
-      grouped[monthKey][e.categoryId] = (grouped[monthKey][e.categoryId] || 0) + e.amount;
-      grouped[monthKey].total += e.amount;
-    });
-
-    // Convert to array and sort by date
-    return Object.values(grouped).sort((a, b) => a.name.localeCompare(b.name));
-  }, [expensesInScope]);
-
-  // Filtered Trends Data (Respects Category Filters)
-  const filteredTrendsData = useMemo(() => {
-    const grouped: Record<string, any> = {};
-
-    filteredExpenses.forEach(e => {
-      // Format YYYY-MM
-      const monthKey = e.date.substring(0, 7);
-
-      if (!grouped[monthKey]) {
-        grouped[monthKey] = { name: monthKey, total: 0 };
-      }
-
-      grouped[monthKey][e.categoryId] = (grouped[monthKey][e.categoryId] || 0) + e.amount;
-      grouped[monthKey].total += e.amount;
-    });
-
-    // Convert to array and sort by date
-    return Object.values(grouped).sort((a, b) => a.name.localeCompare(b.name));
-  }, [filteredExpenses]);
-
-  // Filter categories for Trends Chart based on selection AND non-zero value
-  const dashboardChartCategories = useMemo(() => {
-    // 1. Identify categories with > 0 value in the current scope
-    const activeCategories = new Set<string>();
-    expensesInScope.forEach(e => {
-      activeCategories.add(e.categoryId);
-    });
-
-    const filtered: Record<string, CategoryConfig> = {};
-
-    // 2. If no manual filter, return all active categories
-    if (filters.categories.length === 0) {
-      Object.keys(categories).forEach(id => {
-        if (activeCategories.has(id)) {
-          filtered[id] = categories[id];
-        }
-      });
-      return filtered;
-    }
-
-    // 3. If manual filter, return selected active categories
-    filters.categories.forEach(id => {
-      if (categories[id] && activeCategories.has(id)) {
-        filtered[id] = categories[id];
-      }
-    });
-    return filtered;
-  }, [categories, filters.categories, expensesInScope]);
-
-  // Expense Counts per Category (for Deletion Protection)
-  const expenseCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    expenses.forEach(e => {
-      counts[e.categoryId] = (counts[e.categoryId] || 0) + 1;
-    });
-    return counts;
-  }, [expenses]);
+  // --- Handlers ---
 
   const handleChartClick = (categoryId: string) => {
     setFilters(prev => {
       const isSelected = prev.categories.includes(categoryId);
-      let newCategories;
-
-      if (isSelected) {
-        // Remove it
-        newCategories = prev.categories.filter(id => id !== categoryId);
-      } else {
-        // Add it
-        newCategories = [...prev.categories, categoryId];
-      }
-
-      return {
-        ...prev,
-        categories: newCategories
-      };
+      const newCategories = isSelected
+        ? prev.categories.filter(id => id !== categoryId)
+        : [...prev.categories, categoryId];
+      return { ...prev, categories: newCategories };
     });
   };
 
-  const handleAddExpense = async (expenseData: Omit<Expense, 'id'>) => {
-    const tempId = Date.now();
-    const newExpense: Expense = { ...expenseData, id: tempId };
-    setExpenses(prev => [newExpense, ...prev]);
-    setIsExpenseModalOpen(false);
-
-    const saved = await ApiService.createExpense(newExpense);
-    if (saved) {
-      setExpenses(prev => prev.map(e => e.id === tempId ? saved : e));
-      showToast('Expense added', 'success');
-    } else {
-      setExpenses(prev => prev.filter(e => e.id !== tempId));
-      showToast('Failed to save expense', 'error');
-    }
+  const onAddExpense = async (expenseData: Omit<Expense, 'id'>) => {
+    const success = await addExpense(expenseData);
+    if (success) setIsExpenseModalOpen(false);
   };
 
-  const handleEditExpense = async (expenseData: Omit<Expense, 'id'>) => {
+  const onEditExpense = async (expenseData: Omit<Expense, 'id'>) => {
     if (!editingExpense) return;
-    const updatedExpense = { ...expenseData, id: editingExpense.id };
-    setExpenses(prev => prev.map(e => e.id === editingExpense.id ? updatedExpense : e));
-    setIsExpenseModalOpen(false);
-    setEditingExpense(null);
-
-    const saved = await ApiService.updateExpense(updatedExpense);
-    if (saved) {
-      showToast('Expense updated', 'success');
-    } else {
-      setExpenses(prev => prev.map(e => e.id === editingExpense.id ? editingExpense : e));
-      showToast('Failed to update expense', 'error');
+    const success = await updateExpense(expenseData, editingExpense.id);
+    if (success) {
+      setIsExpenseModalOpen(false);
+      setEditingExpense(null);
     }
   };
 
-  const handleDeleteExpense = async (id: number) => {
-    if (window.confirm('Delete this expense?')) {
-      const previousExpenses = [...expenses];
-      setExpenses(prev => prev.filter(e => e.id !== id));
-      const success = await ApiService.deleteExpense(id);
-      if (success) {
-        showToast('Expense deleted', 'success');
-      } else {
-        setExpenses(previousExpenses);
-        showToast('Failed to delete expense', 'error');
-      }
+  const onSaveCategory = async (category: CategoryConfig) => {
+    const isNew = !categories[category.id];
+    const success = await saveCategory(category, isNew);
+    if (success) {
+      setIsCategoryModalOpen(false);
+      setEditingCategory(null);
     }
   };
 
@@ -301,69 +112,6 @@ const App: React.FC = () => {
   const openEditExpenseModal = (expense: Expense) => {
     setEditingExpense(expense);
     setIsExpenseModalOpen(true);
-  };
-
-  const handleSaveCategory = async (category: CategoryConfig) => {
-    const previousCategories = { ...categories };
-    setCategories(prev => ({ ...prev, [category.id]: category }));
-    setIsCategoryModalOpen(false);
-    setEditingCategory(null);
-
-    let result;
-    if (previousCategories[category.id]) {
-      result = await ApiService.updateCategory(category);
-    } else {
-      result = await ApiService.createCategory(category);
-    }
-
-    if (result.success) {
-      showToast('Category saved', 'success');
-    } else {
-      setCategories(previousCategories);
-      showToast(`Failed to save category: ${result.error?.message || 'Unknown error'}`, 'error');
-    }
-  };
-
-  const handleDeleteCategory = async (categoryId: string) => {
-    const previousCategories = { ...categories };
-
-    // Optimistic update
-    const newCategories = { ...categories };
-    delete newCategories[categoryId];
-    setCategories(newCategories);
-
-    const result = await ApiService.deleteCategory(categoryId);
-
-    if (!result.success) {
-      // Revert
-      setCategories(previousCategories);
-
-      // Check for Foreign Key violation (Postgres Code 23503)
-      // This means expenses exist for this category
-      if (result.error && (result.error.code === '23503' || result.error.message?.includes('foreign key constraint'))) {
-        if (window.confirm('This category contains expenses. Do you want to delete all associated expenses as well?')) {
-          // User agreed to Cascade Delete
-          const cascadeSuccess = await ApiService.deleteExpensesByCategory(categoryId);
-          if (cascadeSuccess) {
-            // Try deleting category again
-            const retryResult = await ApiService.deleteCategory(categoryId);
-            if (retryResult.success) {
-              // Success! Update expenses list too
-              setExpenses(prev => prev.filter(e => e.categoryId !== categoryId));
-              showToast('Category and expenses deleted', 'success');
-              return; // Done
-            }
-          }
-          showToast('Failed to cascade delete. Please try again.', 'error');
-        }
-      } else {
-        // Other error (e.g. RLS)
-        console.error("Delete error:", result.error);
-        showToast(`Failed to delete category: ${result.error?.message || 'Unknown error'}`, 'error');
-      }
-    } else {
-      showToast('Category deleted', 'success');
-    }
   };
 
   const openAddCategoryModal = () => {
@@ -389,11 +137,11 @@ const App: React.FC = () => {
         } else {
           let count = 0;
           for (const expense of newExpenses) {
-            await ApiService.createExpense(expense);
+            await addExpense(expense);
             count++;
           }
-          const fetchedExpenses = await ApiService.getExpenses();
-          setExpenses(fetchedExpenses);
+          // Re-fetch to ensure sync (addExpense does optimistic, but bulk is safer to refetch)
+          await fetchData();
           setDateScope('ALL');
           showToast(`Imported ${count} expenses`, 'success');
         }
@@ -409,13 +157,7 @@ const App: React.FC = () => {
   const handleResetDatabase = async () => {
     if (window.confirm('WARNING: This will delete ALL data. Continue?')) {
       setIsResetting(true);
-      const success = await ApiService.resetDatabase();
-      if (success) {
-        await fetchData();
-        showToast('Reset successful', 'success');
-      } else {
-        showToast('Reset failed', 'error');
-      }
+      await resetDatabase();
       setIsResetting(false);
     }
   };
@@ -505,8 +247,8 @@ const App: React.FC = () => {
                   filters={filters}
                   onFilterChange={setFilters}
                   onEdit={openEditExpenseModal}
-                  onDelete={handleDeleteExpense}
-                  onAdd={handleAddExpense}
+                  onDelete={deleteExpense}
+                  onAdd={onAddExpense}
                   onOpenAddModal={openAddExpenseModal}
                   headerControls={
                     <DateRangeControl
@@ -559,8 +301,8 @@ const App: React.FC = () => {
                     filters={filters}
                     onFilterChange={setFilters}
                     onEdit={openEditExpenseModal}
-                    onDelete={handleDeleteExpense}
-                    onAdd={handleAddExpense}
+                    onDelete={deleteExpense}
+                    onAdd={onAddExpense}
                     onOpenAddModal={openAddExpenseModal}
                     density="compact"
                     headerControls={
@@ -651,8 +393,8 @@ const App: React.FC = () => {
                   filters={filters}
                   onFilterChange={setFilters}
                   onEdit={openEditExpenseModal}
-                  onDelete={handleDeleteExpense}
-                  onAdd={handleAddExpense}
+                  onDelete={deleteExpense}
+                  onAdd={onAddExpense}
                   onOpenAddModal={openAddExpenseModal}
                   density="compact"
                   rightControls={
@@ -710,7 +452,7 @@ const App: React.FC = () => {
                 expenseCounts={expenseCounts}
                 onCreate={openAddCategoryModal}
                 onEdit={openEditCategoryModal}
-                onDelete={handleDeleteCategory}
+                onDelete={deleteCategory}
                 headerAction={
                   <button onClick={toggleTheme} className="p-2 rounded-lg text-muted hover:text-primary hover:bg-accent/10 transition-colors" title="Toggle Theme">
                     {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -776,7 +518,7 @@ const App: React.FC = () => {
         <ExpenseForm
           initialData={editingExpense}
           categories={categories}
-          onSubmit={editingExpense ? handleEditExpense : handleAddExpense}
+          onSubmit={editingExpense ? onEditExpense : onAddExpense}
           onCancel={() => setIsExpenseModalOpen(false)}
         />
       </Modal>
@@ -784,7 +526,7 @@ const App: React.FC = () => {
       <Modal isOpen={isCategoryModalOpen} onClose={() => setIsCategoryModalOpen(false)} title={editingCategory ? 'Edit Category' : 'New Category'}>
         <CategoryForm
           initialData={editingCategory}
-          onSubmit={handleSaveCategory}
+          onSubmit={onSaveCategory}
           onCancel={() => setIsCategoryModalOpen(false)}
         />
       </Modal>
@@ -798,7 +540,9 @@ const NavButton = ({ icon, active, onClick, label }: any) => (
   </button>
 );
 const NavButtonMobile = ({ icon, active, onClick }: any) => (
-  <button onClick={onClick} className={`p-4 rounded-2xl transition-all ${active ? 'text-accent' : 'text-muted'}`}>{icon}</button>
+  <button onClick={onClick} className={`p-3 rounded-xl transition-all ${active ? 'text-accent bg-accent/10' : 'text-muted hover:text-primary'}`}>
+    {icon}
+  </button>
 );
 
 export default App;
